@@ -22,3 +22,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin'])->name('admin.dashboard');
 Route::get('/',[HomeController::class,'home'])->name('home');
+Route::get('/registration',[HomeController::class, 'registration'])->name('registration');
+Route::post('/registration/save',[HomeController::class, 'registration_save'])->name('registration_save');
+Route::get('/registration_list',[HomeController::class, 'registration_list'])->name('registration_list');
