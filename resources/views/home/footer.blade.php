@@ -29,8 +29,8 @@
                     <h2 class="ftco-heading-2">Events</h2>
                     <ul class="list-unstyled">
                         <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Programming Contest</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Hackathon</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>AI & ML Workshops</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Project Showcaching</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Quiz</a></li>
                         <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Tech Talks</a></li>
                         <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Gaming Contest</a></li>
                     </ul>
