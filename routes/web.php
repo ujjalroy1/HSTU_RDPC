@@ -25,3 +25,5 @@ Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/registration',[HomeController::class, 'registration'])->name('registration');
 Route::post('/registration/save',[HomeController::class, 'registration_save'])->name('registration_save');
 Route::get('/registration_list',[HomeController::class, 'registration_list'])->name('registration_list');
+Route::get('/payment/create', [HomeController::class, 'payment_create'])->name('payment_create');
+Route::post('/payment/store', [HomeController::class, 'payment_save'])->name('payment_save');
