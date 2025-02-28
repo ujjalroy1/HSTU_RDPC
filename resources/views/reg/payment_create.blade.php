@@ -50,10 +50,12 @@
             <button type="submit" class="btn btn-primary w-100">Submit Payment Info</button>
         </form>
     </div>
-
+     <p></p>
+     <p></p>
+    @include('home.footer')
+    @include('home.jss')
 
 </body>
-@include('home.footer')
-@include('home.jss')
+
 
 </html>
