@@ -84,4 +84,11 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Payment information submitted successfully!');
     }
+   public function schedule()
+   {
+        return view('home.schedule');
+   }
+
+
+
 }
