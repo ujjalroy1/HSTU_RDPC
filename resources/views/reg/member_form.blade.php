@@ -2,18 +2,24 @@
     <label class="form-label">Name</label>
     <input type="text" name="{{ $prefix }}_name" class="form-control" {{ $required ?? false ? 'required' : '' }}>
 </div>
+
+@if($prefix !== 'coach')
 <div class="mb-3">
     <label class="form-label">ID</label>
     <input type="text" name="{{ $prefix }}_id" class="form-control" {{ $required ?? false ? 'required' : '' }}>
 </div>
+@endif
+
 <div class="mb-3">
     <label class="form-label">Email</label>
     <input type="email" name="{{ $prefix }}_email" class="form-control" {{ $required ?? false ? 'required' : '' }}>
 </div>
+
 <div class="mb-3">
     <label class="form-label">Phone</label>
     <input type="text" name="{{ $prefix }}_phone" class="form-control" {{ $required ?? false ? 'required' : '' }}>
 </div>
+
 <div class="mb-3">
     <label class="form-label">T-Shirt Size</label>
     <select name="{{ $prefix }}_tshirt_size" class="form-control" {{ $required ?? false ? 'required' : '' }}>
