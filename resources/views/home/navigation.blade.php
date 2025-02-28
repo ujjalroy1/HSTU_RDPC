@@ -13,6 +13,7 @@
 				<li class="nav-item"><a href="{{ route('payment_create') }}" class="nav-link">Payment</a></li>
 				<li class="nav-item"><a href="{{ route('registration_list') }}" class="nav-link">Teams</a></li>
 				<li class="nav-item"><a href="blog.html" class="nav-link">Gallery</a></li>
+				<li class="nav-item"><a href="{{ route('teams.index') }}" class="nav-link">Approve</a></li>
 				<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 			</ul>
 		</div>

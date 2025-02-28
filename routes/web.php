@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -27,3 +28,7 @@ Route::post('/registration/save',[HomeController::class, 'registration_save'])->
 Route::get('/registration_list',[HomeController::class, 'registration_list'])->name('registration_list');
 Route::get('/payment/create', [HomeController::class, 'payment_create'])->name('payment_create');
 Route::post('/payment/store', [HomeController::class, 'payment_save'])->name('payment_save');
+
+Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/teams/{id}', [TeamController::class, 'show'])->name('teams.show');
+Route::post('/teams/{id}', [TeamController::class, 'update'])->name('teams.update');

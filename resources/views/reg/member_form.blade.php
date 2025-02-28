@@ -3,7 +3,7 @@
     <input type="text" name="{{ $prefix }}_name" class="form-control" {{ $required ?? false ? 'required' : '' }}>
 </div>
 <div class="mb-3">
-    <label class="form-label">Student ID</label>
+    <label class="form-label">ID</label>
     <input type="text" name="{{ $prefix }}_id" class="form-control" {{ $required ?? false ? 'required' : '' }}>
 </div>
 <div class="mb-3">
@@ -17,6 +17,7 @@
 <div class="mb-3">
     <label class="form-label">T-Shirt Size</label>
     <select name="{{ $prefix }}_tshirt_size" class="form-control" {{ $required ?? false ? 'required' : '' }}>
+        <option value=""></option>
         <option value="S">S</option>
         <option value="M">M</option>
         <option value="L">L</option>
