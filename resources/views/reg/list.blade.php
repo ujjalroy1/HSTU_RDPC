@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <title>HSTU-RDPC</title>
+  <title>HSTU-RDPC Team List</title>
   @include('home.css')
   </head>
   <body>
     
+
      <!-- navbar -->
 	  @include('home.navigation')
 	  <!-- endnavbar -->
+      <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
       <h2 class="bg-success text-white p-2 text-center rounded">Approved Teams</h2>
 
 <div class="container mt-5 w-80 mx-auto">

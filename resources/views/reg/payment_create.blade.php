@@ -12,7 +12,19 @@
 
 <body>
     @include('home.navigation')
-
+   
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
     <div class="container">
         <h2 class="bg-success text-white p-3 text-center rounded">Submit Payment Info</h2>
 

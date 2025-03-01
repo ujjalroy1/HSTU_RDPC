@@ -1,3 +1,7 @@
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <section class="home-slider js-fullheight owl-carousel bg-white">
   <div class="slider-item js-fullheight">
     <div class="overlay"></div>

@@ -4,11 +4,13 @@
 <head>
   <title>HSTU-RDPC</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  @include('home.css')
 </head>
 
 <body>
   <!-- Navigation -->
   @include('home.navigation')
+
 
   <div class="container w-50 mx-auto mt-5">
     <h2 class="bg-primary text-white p-3 text-center rounded">RDCPC Team Registration</h2>
@@ -71,10 +73,14 @@
       </div>
     </form>
   </div>
-
+  
+   <p></p>
+   <p></p>
+   <p></p>
+   <p></p>
   <!-- Footer -->
   @include('home.footer')
-
+  @include('home.jss')
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
