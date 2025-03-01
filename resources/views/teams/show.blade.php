@@ -3,14 +3,26 @@
 
 <head>
     <title>HSTU-RDPC</title>
-    @include('home.css')
+    @include('admin.css')
 </head>
 
 <body>
 
     <!-- navbar -->
-    @include('home.navigation')
-    <div class="container">
+    @include('admin.header')
+    @include('admin.sidebar')
+
+
+    <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+          </div>
+        </div>
+
+          <div>
+
+          <div class="container">
         <h2>Team Details</h2>
         <table class="table table-bordered">
             <tr>
@@ -131,6 +143,18 @@
             <a href="{{ route('teams.index') }}" class="btn btn-secondary">Back</a>
         </form>
     </div>
+
+          
+
+
+
+
+          </div>
+
+            
+      </div>
+
+    @include('admin.jss')
 
 
 </body>

@@ -3,15 +3,25 @@
 
 <head>
     <title>HSTU-RDPC</title>
-    @include('home.css')
+    @include('admin.css')
 </head>
 
 <body>
 
     <!-- navbar -->
-    @include('home.navigation')
+    @include('admin.header')
+    @include('admin.sidebar')
 
-    <div class="container">
+
+    <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+          </div>
+        </div>
+
+          <div>
+          <div class="container">
         <h2 class="mb-4">Team Approval List</h2>
         @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -39,8 +49,17 @@
             </tbody>
         </table>
     </div>
+         
+          </div>
+
+            
+      </div>
 
 
+
+
+
+    @include('admin.jss')
 </body>
 
 </html>

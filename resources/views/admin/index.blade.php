@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html>
+<head> 
+        @include('admin.css')
 </head>
-<body>
-     <h1>You are admin<h1>
-</body>
+
+  <body>
+     
+    <!-- header -->
+       @include('admin.header')
+    <!-- header end -->
+       <!-- sidebar -->
+
+       @include('admin.sidebar')
+
+      <!-- Sidebar Navigation end-->
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+          </div>
+        </div>
+
+          <div>
+          // write you all code here
+          </div>
+
+            
+      </div>
+    
+<!-- JavaScript files -->
+   @include('admin.jss')
+ <!-- end js -->
+
+  </body>
 </html>

@@ -4,7 +4,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,11 +21,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin'])->name('admin.dashboard');
 
 
 
-
+//user
 Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/registration',[HomeController::class, 'registration'])->name('registration');
 Route::post('/registration/save',[HomeController::class, 'registration_save'])->name('registration_save');
@@ -33,11 +32,16 @@ Route::get('/registration_list',[HomeController::class, 'registration_list'])->n
 Route::get('/payment/create', [HomeController::class, 'payment_create'])->name('payment_create');
 Route::post('/payment/store', [HomeController::class, 'payment_save'])->name('payment_save');
 
-Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
-Route::get('/teams/{id}', [TeamController::class, 'show'])->name('teams.show');
-Route::post('/teams/{id}', [TeamController::class, 'update'])->name('teams.update');
+
+//admin
+Route::get('/teams', [TeamController::class, 'index'])->middleware(['auth','admin'])->name('teams.index');
+Route::get('/teams/{id}', [TeamController::class, 'show'])->middleware(['auth','admin'])->name('teams.show');
+Route::post('/teams/{id}', [TeamController::class, 'update'])->middleware(['auth','admin'])->name('teams.update');
 
 
 Route::get('schedule',[HomeController::class, 'schedule'])->name('schedule');
 Route::get('gellary',[HomeController::class, 'gellary'])->name('gellary');
 Route::get('contact',[HomeController::class, 'contact'])->name('contact');
+
+//admin
+Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin'])->name('admin.dashboard');

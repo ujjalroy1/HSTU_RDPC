@@ -25,9 +25,7 @@
                 <li class="nav-item {{ request()->is('gellary') ? 'active' : '' }}">
                     <a href="{{url('gellary')}}" class="nav-link">Gallery</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('teams.index') ? 'active' : '' }}">
-                    <a href="{{ route('teams.index') }}" class="nav-link">Approve</a>
-                </li>
+
                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                     <a href="{{url('contact')}}" class="nav-link">Contact</a>
                 </li>
