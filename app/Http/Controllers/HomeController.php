@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\Payment;
+use App\Mail\TeamRegistrationMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -22,9 +25,11 @@ class HomeController extends Controller
         return view('reg.reg_form');
     }
     /////registration
+
+
     public function registration_save(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'institution' => 'required|string|max:255',
             'team_name' => 'required|string|max:255',
 
@@ -48,10 +53,28 @@ class HomeController extends Controller
             'coach_tshirt_size' => 'required|string',
         ]);
 
-        Team::create($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator) // Send errors to the view
+                ->withInput(); // Keep old input values
+        }
+
+        // If validation passes, save the team
+        $team = Team::create($request->all());
+
+        // Collect email recipients
+        $emails = [$team->coach_email, $team->member1_email];
+        if (!empty($team->member2_email)) $emails[] = $team->member2_email;
+        if (!empty($team->member3_email)) $emails[] = $team->member3_email;
+
+        // Send email to all
+        foreach ($emails as $email) {
+            Mail::to($email)->send(new TeamRegistrationMail($team));
+        }
 
         return redirect()->back()->with('success', 'Team Registered Successfully');
     }
+
     public function registration_list()
     {
         $teams = Team::where('approve', 1)->get();
@@ -59,12 +82,14 @@ class HomeController extends Controller
         return view('reg.list', compact('teams'));
     }
     ///////payment
-    public function payment_create() {
+    public function payment_create()
+    {
         $approvedTeams = Team::where('approve', 1)->pluck('team_name', 'id'); // Fetch approved teams
         return view('reg.payment_create', compact('approvedTeams'));
     }
 
-    public function payment_save(Request $request) {
+    public function payment_save(Request $request)
+    {
         $request->validate([
             'team_id' => 'required|exists:teams,id',
             'payment_from' => 'required|string|max:255',
@@ -84,18 +109,16 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Payment information submitted successfully!');
     }
-   public function schedule()
-   {
+    public function schedule()
+    {
         return view('home.schedule');
-   }
-   public function gellary()
-   {
-      return view('home.gellary');
-   }
-   public function contact()
-   {
-      return view('home.contact');
-   }
-
-
+    }
+    public function gellary()
+    {
+        return view('home.gellary');
+    }
+    public function contact()
+    {
+        return view('home.contact');
+    }
 }
