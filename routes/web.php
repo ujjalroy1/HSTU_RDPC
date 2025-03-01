@@ -39,3 +39,5 @@ Route::post('/teams/{id}', [TeamController::class, 'update'])->name('teams.updat
 
 
 Route::get('schedule',[HomeController::class, 'schedule'])->name('schedule');
+Route::get('gellary',[HomeController::class, 'gellary'])->name('gellary');
+Route::get('contact',[HomeController::class, 'contact'])->name('contact');

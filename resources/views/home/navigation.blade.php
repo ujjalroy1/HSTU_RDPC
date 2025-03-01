@@ -22,14 +22,14 @@
                 <li class="nav-item {{ request()->routeIs('registration_list') ? 'active' : '' }}">
                     <a href="{{ route('registration_list') }}" class="nav-link">Teams</a>
                 </li>
-                <li class="nav-item {{ request()->is('blog*') ? 'active' : '' }}">
-                    <a href="blog.html" class="nav-link">Gallery</a>
+                <li class="nav-item {{ request()->is('gellary') ? 'active' : '' }}">
+                    <a href="{{url('gellary')}}" class="nav-link">Gallery</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('teams.index') ? 'active' : '' }}">
                     <a href="{{ route('teams.index') }}" class="nav-link">Approve</a>
                 </li>
-                <li class="nav-item {{ request()->is('contact*') ? 'active' : '' }}">
-                    <a href="contact.html" class="nav-link">Contact</a>
+                <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
+                    <a href="{{url('contact')}}" class="nav-link">Contact</a>
                 </li>
             </ul>
         </div>

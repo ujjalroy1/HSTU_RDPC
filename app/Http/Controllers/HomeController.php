@@ -88,7 +88,14 @@ class HomeController extends Controller
    {
         return view('home.schedule');
    }
-
+   public function gellary()
+   {
+      return view('home.gellary');
+   }
+   public function contact()
+   {
+      return view('home.contact');
+   }
 
 
 }
