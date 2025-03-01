@@ -1,71 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
   <title>HSTU-RDPC</title>
-  @include('home.css')
-  </head>
-  <body>
-    
-     <!-- navbar -->
-	  @include('home.navigation')
-	  <!-- endnavbar -->
-    
-      <div class="container w-50 mx-auto">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
 
-<h2 class="bg-primary text-white p-2 text-center rounded">RDCPC Team Registration</h2>
+<body>
+  <!-- Navigation -->
+  @include('home.navigation')
 
+  <div class="container w-50 mx-auto mt-5">
+    <h2 class="bg-primary text-white p-3 text-center rounded">RDCPC Team Registration</h2>
 
-@if(session('success'))
-<div class="alert alert-success">{{ session('success') }}</div>
-@endif
+    <!-- Success Message -->
+    @if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
-<div class="container mt-4"></div>
-<form action="{{ route('registration_save') }}" method="POST">
-    @csrf
+    <!-- Validation Errors -->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
 
-    <div class="mb-3">
+    <!-- Registration Form -->
+    <form action="{{ route('registration_save') }}" method="POST">
+      @csrf
+
+      <!-- Institution -->
+      <div class="mb-3">
         <label class="form-label">Institution</label>
-        <input type="text" name="institution" class="form-control" required>
-    </div>
+        <input type="text" name="institution" class="form-control" value="{{ old('institution') }}" required>
+      </div>
 
-    <div class="mb-3">
+      <!-- Team Name -->
+      <div class="mb-3">
         <label class="form-label">Team Name</label>
-        <input type="text" name="team_name" class="form-control" required>
-    </div>
-    <div class="container mt-4"></div>
+        <input type="text" name="team_name" class="form-control" value="{{ old('team_name') }}" required>
+      </div>
 
-    <h4>Member 1</h4>
-    @include('reg.member_form', ['prefix' => 'member1', 'required' => true])
-    <div class="container mt-4"></div>
+      <hr>
 
-    <h4>Member 2 </h4>
-    @include('reg.member_form', ['prefix' => 'member2'])
-    <div class="container mt-4"></div>
+      <!-- Member 1 -->
+      <h4>Member 1</h4>
+      @include('reg.member_form', ['prefix' => 'member1', 'required' => true])
 
-    <h4>Member 3 </h4>
-    @include('reg.member_form', ['prefix' => 'member3'])
-    <div class="container mt-4"></div>
+      <!-- Member 2 -->
+      <h4>Member 2 (Optional)</h4>
+      @include('reg.member_form', ['prefix' => 'member2'])
 
-    <h4>Coach Information</h4>
-    @include('reg.member_form', ['prefix' => 'coach', 'required' => true])
+      <!-- Member 3 -->
+      <h4>Member 3 (Optional)</h4>
+      @include('reg.member_form', ['prefix' => 'member3'])
 
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
-</div>
-       <p></p>
-    <div>
-   </div>
+      <hr>
 
-     <!-- footer -->
-	    @include('home.footer')
-	  <!-- end footer -->
-  
+      <!-- Coach -->
+      <h4>Coach Information</h4>
+      @include('reg.member_form', ['prefix' => 'coach', 'required' => true])
 
-  <!-- loader -->
-  <!-- js -->
-   @include('home.jss')
-  <!-- end js -->
+      <!-- Submit Button -->
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-success px-5">Register</button>
+      </div>
+    </form>
+  </div>
 
-    
-  </body>
+  <!-- Footer -->
+  @include('home.footer')
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
