@@ -298,8 +298,8 @@
                 </p>
 
                 <div class="qr-container">
-                    <a href="https://forms.gle/GMy71xqwbdKUjZdg7" target="_blank">
-                        <img src="{{ asset('user_view/images/Project_Showcasing.png') }}" alt="QR Code" class="qr-code">
+                    <a href="https://forms.gle/TVHBvDP1REuPVy5UA" target="_blank">
+                        <img src="{{ asset('user_view/images/Gaming_Contest.png') }}" alt="QR Code" class="qr-code">
                     </a>
                 </div>
 
@@ -307,7 +307,7 @@
                     Or register using our Google Form
                 </p>
 
-                <a href="https://forms.gle/GMy71xqwbdKUjZdg7" class="google-form-btn">
+                <a href="https://forms.gle/TVHBvDP1REuPVy5UA" class="google-form-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
                         <path d="M20 2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16zm-8 3.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zM12 16v4h6v-4h-6z"/>
                     </svg>

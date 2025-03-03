@@ -8,7 +8,7 @@ use App\Models\Payment;
 use App\Mail\TeamRegistrationMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-
+use Carbon\Carbon;
 class HomeController extends Controller
 {
     //
@@ -121,19 +121,93 @@ class HomeController extends Controller
     {
         return view('home.contact');
     }
+
+
     public function project_showcase()
     {
-        $startDate = '2025-03-04 00:00:00'; // Registration start date
-        $endDate = '2025-03-10 23:59:59';    // Registration end date
+       
+        $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
+        $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
     
+       
         $registrationStatus = 'closed';
-        if ($currentTime < $startDate) {
+        
+        if ($currentTime->lessThan($startDate)) {
             $registrationStatus = 'pending';
-        } elseif ($currentTime >= $startDate && $currentTime <= $endDate) {
+        } elseif ($currentTime->between($startDate, $endDate)) {
             $registrationStatus = 'open';
         }
     
+        // Pass Carbon instances to the view
         return view('reg.project_showcase', compact('registrationStatus', 'startDate', 'endDate'));
+    }
+    public function gaming_contest()
+    {
+
+        $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
+        $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
+        $currentTime = now();
+    
+       
+        $registrationStatus = 'closed';
+        
+        if ($currentTime->lessThan($startDate)) {
+            $registrationStatus = 'pending';
+        } elseif ($currentTime->between($startDate, $endDate)) {
+            $registrationStatus = 'open';
+        }
+    
+        // Pass Carbon instances to the view
+        return view('reg.gaming_contest', compact('registrationStatus', 'startDate', 'endDate'));
+
+
+
+
+    }
+    public function poster_presentation()
+    {
+
+        $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
+        $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
+        $currentTime = now();
+    
+       
+        $registrationStatus = 'closed';
+        
+        if ($currentTime->lessThan($startDate)) {
+            $registrationStatus = 'pending';
+        } elseif ($currentTime->between($startDate, $endDate)) {
+            $registrationStatus = 'open';
+        }
+    
+        // Pass Carbon instances to the view
+        return view('reg.poster_presentation', compact('registrationStatus', 'startDate', 'endDate'));
+
+
+    }
+    public function itquiz()
+    {
+        $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
+        $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
+        $currentTime = now();
+    
+       
+        $registrationStatus = 'closed';
+        
+        if ($currentTime->lessThan($startDate)) {
+            $registrationStatus = 'pending';
+        } elseif ($currentTime->between($startDate, $endDate)) {
+            $registrationStatus = 'open';
+        }
+    
+        // Pass Carbon instances to the view
+        return view('reg.itquiz', compact('registrationStatus', 'startDate', 'endDate'));
+
+
+    }
+    public function main_registration()
+    {
+        return view('reg.main_registration');
     }
 }
