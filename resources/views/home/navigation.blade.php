@@ -35,6 +35,9 @@
                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                     <a href="{{url('contact')}}" class="nav-link">Contact</a>
                 </li>
+                <li class="nav-item {{ request()->routeIs('project_showcase') ? 'active' : '' }}">
+                    <a href="{{url('project-showcase')}}" class="nav-link">project_showcase</a>
+                </li>
             </ul>
         </div>
 

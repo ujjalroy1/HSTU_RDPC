@@ -121,4 +121,19 @@ class HomeController extends Controller
     {
         return view('home.contact');
     }
+    public function project_showcase()
+    {
+        $startDate = '2025-03-04 00:00:00'; // Registration start date
+        $endDate = '2025-03-10 23:59:59';    // Registration end date
+        $currentTime = now();
+    
+        $registrationStatus = 'closed';
+        if ($currentTime < $startDate) {
+            $registrationStatus = 'pending';
+        } elseif ($currentTime >= $startDate && $currentTime <= $endDate) {
+            $registrationStatus = 'open';
+        }
+    
+        return view('reg.project_showcase', compact('registrationStatus', 'startDate', 'endDate'));
+    }
 }
