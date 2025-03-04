@@ -7,8 +7,10 @@ use App\Models\Team;
 use App\Models\Payment;
 use App\Mail\TeamRegistrationMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+
 class HomeController extends Controller
 {
     //
@@ -35,31 +37,105 @@ class HomeController extends Controller
 
             'member1_name' => 'required|string|max:255',
             'member1_id' => 'required|string|unique:teams,member1_id',
-            'member1_email' => 'required|email|unique:teams,member1_email',
+            'member1_email' => [
+                'required',
+                'email',
+                function ($attribute, $value, $fail) {
+                    $exists = DB::table('teams')
+                        ->where('member1_email', $value)
+                        ->orWhere('member2_email', $value)
+                        ->orWhere('member3_email', $value)
+                        ->exists();
+
+                    if ($exists) {
+                        $fail('This email is already registered in another team.');
+                    }
+                }
+            ],
             'member1_phone' => 'required|string|max:15',
             'member1_tshirt_size' => 'required|string',
 
             'member2_id' => 'nullable|string|unique:teams,member2_id',
-            'member2_email' => 'nullable|email|unique:teams,member2_email',
+            'member2_email' => [
+                'nullable',
+                'email',
+                function ($attribute, $value, $fail) use ($request) {
+                    if (!empty($value)) {
+                        // Check uniqueness across teams
+                        $exists = DB::table('teams')
+                            ->where('member1_email', $value)
+                            ->orWhere('member2_email', $value)
+                            ->orWhere('member3_email', $value)
+                            ->exists();
+
+                        if ($exists) {
+                            $fail('This email is already registered in another team.');
+                        }
+
+                        // Ensure member2 email is different from member1 email
+                        if ($value === $request->member1_email) {
+                            $fail('Member 2 email must be different from Member 1 email.');
+                        }
+                    }
+                }
+            ],
             'member2_tshirt_size' => 'nullable|string',
 
             'member3_id' => 'nullable|string|unique:teams,member3_id',
-            'member3_email' => 'nullable|email|unique:teams,member3_email',
+            'member3_email' => [
+                'nullable',
+                'email',
+                function ($attribute, $value, $fail) use ($request) {
+                    if (!empty($value)) {
+                        // Check uniqueness across teams
+                        $exists = DB::table('teams')
+                            ->where('member1_email', $value)
+                            ->orWhere('member2_email', $value)
+                            ->orWhere('member3_email', $value)
+                            ->exists();
+
+                        if ($exists) {
+                            $fail('This email is already registered in another team.');
+                        }
+
+                        // Ensure member3 email is different from member1 and member2 emails
+                        if ($value === $request->member1_email) {
+                            $fail('Member 3 email must be different from Member 1 email.');
+                        }
+                        if (!empty($request->member2_email) && $value === $request->member2_email) {
+                            $fail('Member 3 email must be different from Member 2 email.');
+                        }
+                    }
+                }
+            ],
             'member3_tshirt_size' => 'nullable|string',
 
             'coach_name' => 'required|string|max:255',
-            'coach_email' => 'required|email|unique:teams,coach_email',
+            'coach_email' => [
+                'required',
+                'email',
+                function ($attribute, $value, $fail) use ($request) {
+                    // Ensure coach email is different from all member emails
+                    if (
+                        $value === $request->member1_email ||
+                        (!empty($request->member2_email) && $value === $request->member2_email) ||
+                        (!empty($request->member3_email) && $value === $request->member3_email)
+                    ) {
+                        $fail('Coach email must be different from all member emails.');
+                    }
+                }
+            ],
             'coach_phone' => 'required|string|max:15',
             'coach_tshirt_size' => 'required|string',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()
-                ->withErrors($validator) // Send errors to the view
-                ->withInput(); // Keep old input values
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        // If validation passes, save the team
+        // Save the team
         $team = Team::create($request->all());
 
         // Collect email recipients
@@ -67,7 +143,7 @@ class HomeController extends Controller
         if (!empty($team->member2_email)) $emails[] = $team->member2_email;
         if (!empty($team->member3_email)) $emails[] = $team->member3_email;
 
-        // Send email to all
+        // Send email notifications
         foreach ($emails as $email) {
             Mail::to($email)->send(new TeamRegistrationMail($team));
         }
@@ -125,20 +201,20 @@ class HomeController extends Controller
 
     public function project_showcase()
     {
-       
+
         $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
         $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
-    
-       
+
+
         $registrationStatus = 'closed';
-        
+
         if ($currentTime->lessThan($startDate)) {
             $registrationStatus = 'pending';
         } elseif ($currentTime->between($startDate, $endDate)) {
             $registrationStatus = 'open';
         }
-    
+
         // Pass Carbon instances to the view
         return view('reg.project_showcase', compact('registrationStatus', 'startDate', 'endDate'));
     }
@@ -148,22 +224,18 @@ class HomeController extends Controller
         $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
         $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
-    
-       
+
+
         $registrationStatus = 'closed';
-        
+
         if ($currentTime->lessThan($startDate)) {
             $registrationStatus = 'pending';
         } elseif ($currentTime->between($startDate, $endDate)) {
             $registrationStatus = 'open';
         }
-    
+
         // Pass Carbon instances to the view
         return view('reg.gaming_contest', compact('registrationStatus', 'startDate', 'endDate'));
-
-
-
-
     }
     public function poster_presentation()
     {
@@ -171,40 +243,36 @@ class HomeController extends Controller
         $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
         $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
-    
-       
+
+
         $registrationStatus = 'closed';
-        
+
         if ($currentTime->lessThan($startDate)) {
             $registrationStatus = 'pending';
         } elseif ($currentTime->between($startDate, $endDate)) {
             $registrationStatus = 'open';
         }
-    
+
         // Pass Carbon instances to the view
         return view('reg.poster_presentation', compact('registrationStatus', 'startDate', 'endDate'));
-
-
     }
     public function itquiz()
     {
         $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
         $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
-    
-       
+
+
         $registrationStatus = 'closed';
-        
+
         if ($currentTime->lessThan($startDate)) {
             $registrationStatus = 'pending';
         } elseif ($currentTime->between($startDate, $endDate)) {
             $registrationStatus = 'open';
         }
-    
+
         // Pass Carbon instances to the view
         return view('reg.itquiz', compact('registrationStatus', 'startDate', 'endDate'));
-
-
     }
     public function main_registration()
     {

@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MessageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,11 +33,6 @@ Route::get('/registration_list',[HomeController::class, 'registration_list'])->n
 Route::get('/payment/create', [HomeController::class, 'payment_create'])->name('payment_create');
 Route::post('/payment/store', [HomeController::class, 'payment_save'])->name('payment_save');
 Route::get('project-showcase', [HomeController::class, 'project_showcase'])->name('project_showcase');
-Route::get('main-registration', [HomeController::class, 'main_registration'])->name('main_registration');
-Route::get('gaming-contest', [HomeController::class, 'gaming_contest'])->name('gaming_contest');
-Route::get('poster-presentation', [HomeController::class, 'poster_presentation'])->name('poster_presentation');
-Route::get('itquiz', [HomeController::class, 'itquiz'])->name('itquiz');
-
 
 //admin
 Route::get('/teams', [TeamController::class, 'index'])->middleware(['auth','admin'])->name('teams.index');
@@ -50,3 +46,6 @@ Route::get('contact',[HomeController::class, 'contact'])->name('contact');
 
 //admin
 Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin'])->name('admin.dashboard');
+
+Route::get('/message-form', [MessageController::class, 'showForm'])->name('showForm');
+Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('sendMessage');
