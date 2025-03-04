@@ -16,8 +16,8 @@
                 <li class="nav-item {{ request()->is('schedule') ? 'active' : '' }}">
                     <a href="{{url('schedule')}}" class="nav-link">Schedule</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('registration') ? 'active' : '' }}">
-                    <a href="{{ route('registration') }}" class="nav-link">Registration</a>
+                <li class="nav-item {{ request()->routeIs('main_registration') ? 'active' : '' }}">
+                    <a href="{{ route('main_registration') }}" class="nav-link">Registration</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('payment_create') ? 'active' : '' }}">
                     <a href="{{ route('payment_create') }}" class="nav-link">Payment</a>
@@ -31,12 +31,12 @@
                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                     <a href="{{url('contact')}}" class="nav-link">Contact</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('project_showcase') ? 'active' : '' }}">
+                <!-- <li class="nav-item {{ request()->routeIs('project_showcase') ? 'active' : '' }}">
                     <a href="{{url('project-showcase')}}" class="nav-link">project_showcase</a>
 
                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                     <a href="{{route('showForm') }}" class="nav-link">Message</a>
-                </li>
+                </li> -->
             </ul>
         </div>
 

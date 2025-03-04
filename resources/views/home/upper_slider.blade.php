@@ -1,27 +1,18 @@
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<!-- Running Header (Marquee) -->
+<marquee behavior="scroll" direction="left" class="running-header" style="font-size: 20px; font-weight: bold; background: linear-gradient(90deg, #6a11cb, #2575fc); color: #fff; padding: 10px;">
+  HSTU CSE Fest: A Celebration of Coding, Innovation, and Gaming!
+</marquee>
+
 <section class="home-slider js-fullheight owl-carousel bg-white">
   <div class="slider-item js-fullheight">
     <div class="overlay"></div>
     <div class="container">
       <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-      <div class="one-third order-md-last img js-fullheight" 
-     style="background-image: url('{{ asset('user_view/images/hstu logo.jpg') }}'); 
-            background-size: contain; 
-            background-position: center; 
-            background-repeat: no-repeat;">
-         </div>
-
-        <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-          <div class="text">
-            <h2 class="mb-4">HSTU CSE Fest:<br>
-               A Celebration of <br>
-               Coding, Innovation, and Gaming!</h2>
-            <!-- <p>HSTU-RDPC: The Ultimate Tech Fest Featuring Programming Contests, Project Showcasing, Poster Design, and Gaming Unleash Your Skills and Compete with the Best!</p> -->
-            <!-- <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">View our works</a></p> -->
-          </div>
+        <div class="one-third order-md-last img js-fullheight" 
+             style="background-image: url('{{ asset('user_view/images/hstu logo.jpg') }}'); 
+                    background-size: contain; 
+                    background-position: center; 
+                    background-repeat: no-repeat;">
         </div>
       </div>
     </div>
@@ -31,17 +22,33 @@
     <div class="overlay"></div>
     <div class="container">
       <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-        <div class="one-third order-md-last img js-fullheight" style="background-image: url('{{ asset('user_view/images/hstu gate.jpg') }}');">
-          
-        </div>
-        <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-          <div class="text">
-            <h2 class="mb-4">HSTU CSE Fest:<br>
-               A Celebration of <br>
-               Coding, Innovation, and Gaming!</h2>
-          </div>
+        <div class="one-third order-md-last img js-fullheight" 
+             style="background-image: url('{{ asset('user_view/images/hstu gate.jpg') }}'); 
+                    background-size: cover; 
+                    background-position: center;">
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Responsive Design Adjustments -->
+<style>
+  .running-header {
+    font-size: 18px; /* Default font size */
+  }
+
+  @media (max-width: 768px) {
+    .running-header {
+      font-size: 16px; /* Smaller font size for tablets */
+      padding: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .running-header {
+      font-size: 14px; /* Even smaller font size for mobile phones */
+      padding: 6px;
+    }
+  }
+</style>

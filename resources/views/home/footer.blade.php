@@ -54,7 +54,7 @@
         <div class="footer-bottom">
             <p>Copyright &copy; 2025 All rights reserved by <b>Programmers Arena</b> | 
                 Developed with <span class="heart-icon">❤</span> by 
-                <a href="#" target="_blank">Ujjal</a> and <a href="#" target="_blank">Abhijit</a>
+                <a href="https://www.linkedin.com/in/ujjal-roy-321103241/" target="_blank">Ujjal</a> and <a href="#" target="_blank">Abhijit</a>
             </p>
         </div>
     </div>

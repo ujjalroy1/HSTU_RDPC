@@ -1,4 +1,28 @@
-<!-- resources/views/select_recipients.blade.php -->
+<!DOCTYPE html>
+<html>
+<head> 
+        @include('admin.css')
+</head>
+
+  <body>
+     
+    <!-- header -->
+       @include('admin.header')
+    <!-- header end -->
+       <!-- sidebar -->
+
+       @include('admin.sidebar')
+
+      <!-- Sidebar Navigation end-->
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+          </div>
+        </div>
+
+          <div>
+          <!-- resources/views/select_recipients.blade.php -->
 <form action="{{ route('sendMessage') }}" method="POST">
     @csrf
 
@@ -24,3 +48,15 @@
 
     <button type="submit">Send Message</button>
 </form>
+
+          </div>
+
+            
+      </div>
+    
+<!-- JavaScript files -->
+   @include('admin.jss')
+ <!-- end js -->
+
+  </body>
+</html>

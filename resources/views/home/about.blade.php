@@ -13,7 +13,7 @@
                 <div class="pl-md-5 ml-md-5 mb-5">
                     <p>HSTU CSE Fest is the ultimate celebration of technology, creativity, and problem-solving. This grand event brings together passionate minds to compete in programming contests, showcase innovative projects, design inspiring posters, and engage in thrilling gaming battles.</p>
                     <p>Whether you're a coder, designer, innovator, or gaming enthusiast, HSTU CSE Fest offers a platform to challenge yourself, collaborate, and shine among the best. Join us in pushing the boundaries of technology and creativity!</p>
-                    <p><a href="#" class="btn-custom">Learn More <span class="ion-ios-arrow-forward"></span></a></p>
+                    <!-- <p><a href="#" class="btn-custom">Learn More <span class="ion-ios-arrow-forward"></span></a></p> -->
                 </div>
             </div>
         </div>

@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <title>HSTU-RDPC Schedule</title>
-  @include('home.css')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>HSTU-RDPC Schedule</title>
+    @include('home.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   </head>
   <body>
-    
-     <!-- navbar -->
+    <!-- navbar -->
     @include('home.navigation')
     <!-- endnavbar -->
-    
-    <div class="container py-5 mt-5"> <!-- Added mt-5 for navbar spacing -->
+
+    <div class="container py-5 mt-5">
       <!-- Page Header -->
       <div class="text-center mb-5">
         <h1 class="display-4 font-weight-bold text-dark mb-3">Event Schedule</h1>
@@ -29,7 +28,6 @@
                   <i class="fas fa-code fa-2x"></i>
                 </div>
                 <h3 class="card-title mb-0">Programming Contest</h3>
-                <!-- <span class="badge badge-warning ml-auto">Upcoming</span> -->
               </div>
               <div class="schedule-dates">
                 <div class="media mb-4">
@@ -70,7 +68,6 @@
                   <i class="fas fa-project-diagram fa-2x"></i>
                 </div>
                 <h3 class="card-title mb-0">Project Showcase</h3>
-                <!-- <span class="badge badge-info ml-auto">New</span> -->
               </div>
               <div class="schedule-dates">
                 <div class="media mb-4">
@@ -103,7 +100,6 @@
                   <i class="fas fa-question-circle fa-2x"></i>
                 </div>
                 <h3 class="card-title mb-0">Quiz Competition</h3>
-                <!-- <span class="badge badge-danger ml-auto">Hot</span> -->
               </div>
               <div class="schedule-dates">
                 <div class="media mb-4">
@@ -136,7 +132,6 @@
                   <i class="fas fa-gamepad fa-2x"></i>
                 </div>
                 <h3 class="card-title mb-0">Gaming Contest</h3>
-                <!-- <span class="badge badge-success ml-auto">Popular</span> -->
               </div>
               <div class="schedule-dates">
                 <div class="media mb-4">
@@ -153,6 +148,38 @@
                       <i class="fas fa-chess mr-2"></i>Final
                     </h5>
                     <p class="text-muted mb-0">20 April</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Poster Presentation -->
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="card border-left-info shadow-lg h-100 hover-effect">
+            <div class="card-body">
+              <div class="d-flex align-items-center mb-4">
+                <div class="icon-square bg-info text-white rounded-circle p-3 mr-3">
+                  <i class="fas fa-image fa-2x"></i> <!-- Icon for Poster Presentation -->
+                </div>
+                <h3 class="card-title mb-0">Poster Presentation</h3>
+              </div>
+              <div class="schedule-dates">
+                <div class="media mb-4">
+                  <div class="media-body">
+                    <h5 class="mt-0 text-primary">
+                      <i class="far fa-calendar-alt mr-2"></i>Registration
+                    </h5>
+                    <p class="text-muted mb-0">18 - 22 April</p>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-body">
+                    <h5 class="mt-0 text-success">
+                      <i class="fas fa-images mr-2"></i>Final
+                    </h5>
+                    <p class="text-muted mb-0">24 April</p>
                   </div>
                 </div>
               </div>
@@ -183,6 +210,10 @@
                 <div class="col-6 col-md-3 mb-3">
                   <span class="legend-dot bg-danger"></span>
                   <p class="mb-0 text-muted small">Gaming</p>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                  <span class="legend-dot bg-info"></span>
+                  <p class="mb-0 text-muted small">Poster</p>
                 </div>
               </div>
             </div>
@@ -226,6 +257,7 @@
       .border-left-success { border-left: 4px solid #1cc88a; }
       .border-left-warning { border-left: 4px solid #f6c23e; }
       .border-left-danger { border-left: 4px solid #e74a3b; }
+      .border-left-info { border-left: 4px solid #36b9cc; } <!-- Added for Poster Presentation -->
       .card-title {
         color: #2d3748;
         font-weight: 600;
