@@ -5,13 +5,9 @@
             <img src="{{ asset('user_view/images/pac_logo.png') }}" alt="Logo 1" class="logo-img">
             <span class="ml-2 fw-bold">HSTU_RDPC</span>
         </a>
-
-        <!-- Toggle Button for Mobile -->
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!-- Navbar Items -->
         <div class="collapse navbar-collapse justify-content-center" id="ftco-nav">
             <ul class="navbar-nav">
                 <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
@@ -20,8 +16,8 @@
                 <li class="nav-item {{ request()->is('schedule') ? 'active' : '' }}">
                     <a href="{{url('schedule')}}" class="nav-link">Schedule</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('main_registration') ? 'active' : '' }}">
-                    <a href="{{ url('main-registration') }}" class="nav-link">Registration</a>
+                <li class="nav-item {{ request()->routeIs('registration') ? 'active' : '' }}">
+                    <a href="{{ route('registration') }}" class="nav-link">Registration</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('payment_create') ? 'active' : '' }}">
                     <a href="{{ route('payment_create') }}" class="nav-link">Payment</a>
@@ -35,13 +31,16 @@
                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                     <a href="{{url('contact')}}" class="nav-link">Contact</a>
                 </li>
-                <!-- <li class="nav-item {{ request()->routeIs('project_showcase') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('project_showcase') ? 'active' : '' }}">
                     <a href="{{url('project-showcase')}}" class="nav-link">project_showcase</a>
-                </li> -->
+
+                <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
+                    <a href="{{route('showForm') }}" class="nav-link">Message</a>
+                </li>
             </ul>
         </div>
 
-        <!-- Right Logo -->
+
         <a class="navbar-brand d-none d-lg-block" href="{{ route('home') }}">
             <img src="{{ asset('user_view/images/hstu logo.jpg') }}" alt="Logo 2" class="logo-img">
         </a>
