@@ -126,7 +126,7 @@ class HomeController extends Controller
     public function project_showcase()
     {
        
-        $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
+        $startDate = Carbon::create(2025, 3, 5, 0, 0, 0, config('app.timezone'));
         $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
     
