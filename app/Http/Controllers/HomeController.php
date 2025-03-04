@@ -198,31 +198,23 @@ class HomeController extends Controller
         return view('home.contact');
     }
 
-
     public function project_showcase()
     {
-<<<<<<< HEAD
-       
         $startDate = Carbon::create(2025, 3, 5, 0, 0, 0, config('app.timezone'));
-=======
-
-        $startDate = Carbon::create(2025, 3, 3, 0, 0, 0, config('app.timezone'));
->>>>>>> 69d114144757c2e4ea8a0e62c9bf21f86c080aac
         $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
-
-
+    
         $registrationStatus = 'closed';
-
+    
         if ($currentTime->lessThan($startDate)) {
             $registrationStatus = 'pending';
         } elseif ($currentTime->between($startDate, $endDate)) {
             $registrationStatus = 'open';
         }
-
-        // Pass Carbon instances to the view
+    
         return view('reg.project_showcase', compact('registrationStatus', 'startDate', 'endDate'));
     }
+    
     public function gaming_contest()
     {
 
