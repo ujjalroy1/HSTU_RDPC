@@ -157,6 +157,12 @@ class HomeController extends Controller
 
         return view('reg.list', compact('teams'));
     }
+    public function approve_list()
+    {
+        $teams = Team::where('approve', 1)->get();
+
+        return view('reg.alist', compact('teams'));
+    }
     ///////payment
     public function payment_create()
     {
@@ -203,18 +209,18 @@ class HomeController extends Controller
         $startDate = Carbon::create(2025, 3, 5, 0, 0, 0, config('app.timezone'));
         $endDate = Carbon::create(2025, 3, 10, 23, 59, 59, config('app.timezone'));
         $currentTime = now();
-    
+
         $registrationStatus = 'closed';
-    
+
         if ($currentTime->lessThan($startDate)) {
             $registrationStatus = 'pending';
         } elseif ($currentTime->between($startDate, $endDate)) {
             $registrationStatus = 'open';
         }
-    
+
         return view('reg.project_showcase', compact('registrationStatus', 'startDate', 'endDate'));
     }
-    
+
     public function gaming_contest()
     {
 

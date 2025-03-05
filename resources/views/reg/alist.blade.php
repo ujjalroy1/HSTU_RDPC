@@ -34,6 +34,7 @@
                     <th>Serial No.</th>
                     <th>Team Name</th>
                     <th>University</th>
+                    <th>Payment Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,13 +43,19 @@
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $team->team_name }}</td>
                     <td>{{ $team->institution }}</td>
-
+                    <td>
+                        @if($team->payment == 0)
+                        <span class="badge bg-warning">Pending</span>
+                        @else
+                        <span class="badge bg-success">Done</span>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <a href="{{ route('registration') }}" class="btn btn-primary mt-3">Back to Registration</a>
+        <a href="{{ route('payment_create') }}" class="btn btn-primary mt-3">Back to Payment</a>
     </div>
     <p></p>
     <p></p>

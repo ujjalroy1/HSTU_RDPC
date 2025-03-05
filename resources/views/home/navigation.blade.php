@@ -23,7 +23,10 @@
                     <a href="{{ route('payment_create') }}" class="nav-link">Payment</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('registration_list') ? 'active' : '' }}">
-                    <a href="{{ route('registration_list') }}" class="nav-link">Teams</a>
+                    <a href="{{ route('registration_list') }}" class="nav-link">Registered Teams</a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('approve_list') ? 'active' : '' }}">
+                    <a href="{{ route('approve_list') }}" class="nav-link">Approved Teams</a>
                 </li>
                 <li class="nav-item {{ request()->is('gellary') ? 'active' : '' }}">
                     <a href="{{url('gellary')}}" class="nav-link">Gallery</a>
@@ -50,12 +53,14 @@
 <style>
     /* Adjust body padding to avoid navbar overlap */
     body {
-        padding-top: 80px; /* Adjust this value based on navbar height */
+        padding-top: 80px;
+        /* Adjust this value based on navbar height */
     }
 
     /* Navbar Styling */
     .navbar {
-        background: linear-gradient(45deg, #0d47a1, #1976d2, #2196f3); /* Gradient effect */
+        background: linear-gradient(45deg, #0d47a1, #1976d2, #2196f3);
+        /* Gradient effect */
         padding: 12px 0;
         transition: all 0.3s ease-in-out;
     }
@@ -85,7 +90,8 @@
         border-radius: 8px;
     }
 
-    .nav-link:hover, .nav-item.active .nav-link {
+    .nav-link:hover,
+    .nav-item.active .nav-link {
         background: rgba(255, 255, 255, 0.2);
         color: #fff;
     }

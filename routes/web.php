@@ -21,15 +21,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
 //user
-Route::get('/',[HomeController::class,'home'])->name('home');
-Route::get('/registration',[HomeController::class, 'registration'])->name('registration');
-Route::post('/registration/save',[HomeController::class, 'registration_save'])->name('registration_save');
-Route::get('/registration_list',[HomeController::class, 'registration_list'])->name('registration_list');
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/registration', [HomeController::class, 'registration'])->name('registration');
+Route::post('/registration/save', [HomeController::class, 'registration_save'])->name('registration_save');
+Route::get('/registration_list', [HomeController::class, 'registration_list'])->name('registration_list');
+Route::get('/approve_list', [HomeController::class, 'approve_list'])->name('approve_list');
 Route::get('/payment/create', [HomeController::class, 'payment_create'])->name('payment_create');
 Route::post('/payment/store', [HomeController::class, 'payment_save'])->name('payment_save');
 Route::get('project-showcase', [HomeController::class, 'project_showcase'])->name('project_showcase');
@@ -40,17 +41,17 @@ Route::get('itquiz', [HomeController::class, 'itquiz'])->name('itquiz');
 
 
 //admin
-Route::get('/teams', [TeamController::class, 'index'])->middleware(['auth','admin'])->name('teams.index');
-Route::get('/teams/{id}', [TeamController::class, 'show'])->middleware(['auth','admin'])->name('teams.show');
-Route::post('/teams/{id}', [TeamController::class, 'update'])->middleware(['auth','admin'])->name('teams.update');
+Route::get('/teams', [TeamController::class, 'index'])->middleware(['auth', 'admin'])->name('teams.index');
+Route::get('/teams/{id}', [TeamController::class, 'show'])->middleware(['auth', 'admin'])->name('teams.show');
+Route::post('/teams/{id}', [TeamController::class, 'update'])->middleware(['auth', 'admin'])->name('teams.update');
 
 
-Route::get('schedule',[HomeController::class, 'schedule'])->name('schedule');
-Route::get('gellary',[HomeController::class, 'gellary'])->name('gellary');
-Route::get('contact',[HomeController::class, 'contact'])->name('contact');
+Route::get('schedule', [HomeController::class, 'schedule'])->name('schedule');
+Route::get('gellary', [HomeController::class, 'gellary'])->name('gellary');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 
 //admin
-Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin'])->name('admin.dashboard');
+Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
-Route::get('/message-form', [MessageController::class, 'showForm'])->middleware(['auth','admin'])->name('showForm');
-Route::post('/send-message', [MessageController::class, 'sendMessage'])->middleware(['auth','admin'])->name('sendMessage');
+Route::get('/message-form', [MessageController::class, 'showForm'])->middleware(['auth', 'admin'])->name('showForm');
+Route::post('/send-message', [MessageController::class, 'sendMessage'])->middleware(['auth', 'admin'])->name('sendMessage');
