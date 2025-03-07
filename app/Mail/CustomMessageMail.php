@@ -8,6 +8,8 @@ use Illuminate\Queue\SerializesModels;
 
 class CustomMessageMail extends Mailable
 {
+    use Queueable, SerializesModels;
+
     public $messageContent;
 
     public function __construct($messageContent)

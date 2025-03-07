@@ -44,6 +44,7 @@ Route::get('itquiz', [HomeController::class, 'itquiz'])->name('itquiz');
 Route::get('/teams', [TeamController::class, 'index'])->middleware(['auth', 'admin'])->name('teams.index');
 Route::get('/teams/{id}', [TeamController::class, 'show'])->middleware(['auth', 'admin'])->name('teams.show');
 Route::post('/teams/{id}', [TeamController::class, 'update'])->middleware(['auth', 'admin'])->name('teams.update');
+Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->middleware(['auth', 'admin'])->name('teams.destroy');
 
 
 Route::get('schedule', [HomeController::class, 'schedule'])->name('schedule');

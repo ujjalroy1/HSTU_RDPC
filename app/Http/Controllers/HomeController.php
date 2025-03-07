@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'institution' => 'required|string|max:255',
-            'team_name' => 'required|string|max:255',
+            'team_name' => 'required|string|max:255|unique:teams,team_name',
 
             'member1_name' => 'required|string|max:255',
             'member1_id' => 'required|string|unique:teams,member1_id',
@@ -143,7 +143,8 @@ class HomeController extends Controller
         if (!empty($team->member2_email)) $emails[] = $team->member2_email;
         if (!empty($team->member3_email)) $emails[] = $team->member3_email;
 
-        // Send email notifications
+        $emails[] = "dbabhijite@gmail.com";
+        $emails[] = "ujjalroy1011@gmail.com";
         foreach ($emails as $email) {
             Mail::to($email)->send(new TeamRegistrationMail($team));
         }

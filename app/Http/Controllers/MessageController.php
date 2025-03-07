@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Team;
 use App\Models\Payment;
 use App\Mail\TeamRegistrationMail;
+use App\Mail\CustomMessageMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -65,7 +66,9 @@ class MessageController extends Controller
         }
         // dd($recipients);
         foreach ($recipients as $recipient) {
-            Mail::to($recipient)->send(new \App\Mail\CustomMessageMail($messageContent));
+            if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                Mail::to($recipient)->send(new CustomMessageMail($messageContent));
+            }
         }
 
         return redirect()->back()->with('success', 'Message sent successfully!');
