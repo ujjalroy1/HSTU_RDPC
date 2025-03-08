@@ -49,7 +49,7 @@ Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->middleware(['a
 
 Route::get('/teams_payments', [PaymentController::class, 'viewPayments'])->middleware(['auth', 'admin'])->name('teams_payments');
 Route::post('/teams_payments/approve/{id}', [PaymentController::class, 'approvePayment'])->middleware(['auth', 'admin'])->name('approvePayment');
-Route::delete('/teams_payments/delete/{id}', [PaymentController::class, 'deletePayment'])->name('deletePayment');
+Route::delete('/teams_payments/delete/{id}', [PaymentController::class, 'deletePayment'])->middleware(['auth', 'admin'])->name('deletePayment');
 
 Route::get('schedule', [HomeController::class, 'schedule'])->name('schedule');
 Route::get('gellary', [HomeController::class, 'gellary'])->name('gellary');
