@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +47,9 @@ Route::get('/teams/{id}', [TeamController::class, 'show'])->middleware(['auth', 
 Route::post('/teams/{id}', [TeamController::class, 'update'])->middleware(['auth', 'admin'])->name('teams.update');
 Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->middleware(['auth', 'admin'])->name('teams.destroy');
 
+Route::get('/teams_payments', [PaymentController::class, 'viewPayments'])->middleware(['auth', 'admin'])->name('teams_payments');
+Route::post('/teams_payments/approve/{id}', [PaymentController::class, 'approvePayment'])->middleware(['auth', 'admin'])->name('approvePayment');
+Route::delete('/teams_payments/delete/{id}', [PaymentController::class, 'deletePayment'])->name('deletePayment');
 
 Route::get('schedule', [HomeController::class, 'schedule'])->name('schedule');
 Route::get('gellary', [HomeController::class, 'gellary'])->name('gellary');

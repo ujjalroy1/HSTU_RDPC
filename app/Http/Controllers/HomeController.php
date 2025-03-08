@@ -173,12 +173,12 @@ class HomeController extends Controller
 
     public function payment_save(Request $request)
     {
-        $request->validate([
-            'team_id' => 'required|exists:teams,id',
-            'payment_from' => 'required|string|max:255',
-            'payment_to' => 'required|string|max:255',
-            'transaction_id' => 'required|string|max:255|unique:payments'
-        ]);
+        // $request->validate([
+        //     'team_id' => 'required|exists:teams,id',
+        //     'payment_from' => 'required|string|max:255',
+        //     'payment_to' => 'required|string|max:255',
+        //     'transaction_id' => 'required|string|max:255|unique:payments'
+        // ]);
 
         $team = Team::findOrFail($request->team_id);
 
