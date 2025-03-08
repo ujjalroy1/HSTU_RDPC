@@ -15,6 +15,7 @@
         <li class="active"><a href="{{ url('admin/dashboard') }}"> <i class="icon-home"></i>Home </a></li>
 
                 <li><a href="{{ url('/teams') }}"> <i class="icon-grid"></i>Approve </a></li>
+                <li><a href="{{ url('/teams_payments') }}"> <i class="icon-grid"></i>Payment List </a></li>
                 <li><a href="{{ url('/message-form') }}"> <i class="fa fa-bar-chart"></i> Message </a></li>
 
                 <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
