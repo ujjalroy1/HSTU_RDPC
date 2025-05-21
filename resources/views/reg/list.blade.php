@@ -4,6 +4,13 @@
 <head>
     <title>HSTU-RDPC Team List</title>
     @include('home.css')
+    <style>
+        .pt-5,
+        .py-5 {
+            padding-top: 0rem !important;
+            padding-bottom: 0rem !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,22 +19,15 @@
     <!-- navbar -->
     @include('home.navigation')
     <!-- endnavbar -->
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <h2 class="bg-success text-white p-2 text-center rounded">Approved Teams</h2>
+    <!-- <h2 class="bg-success text-white p-2 text-center rounded">Approved Teams</h2> -->
 
     <div class="container mt-5 w-80 mx-auto">
-
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-dark">Registered Teams</h1>
+                <p class="text-muted">Registration primarily approved</p>
+            </div>
+        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -52,20 +52,8 @@
     </div>
     <p></p>
     <p></p>
-
-
-
-    <!-- footer -->
     @include('home.footer')
-    <!-- end footer -->
-
-
-    <!-- loader -->
-    <!-- js -->
     @include('home.jss')
-    <!-- end js -->
-
-
 </body>
 
 </html>

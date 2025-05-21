@@ -26,7 +26,7 @@
                     <a href="{{ route('registration_list') }}" class="nav-link">Registered Teams</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('approve_list') ? 'active' : '' }}">
-                    <a href="{{ route('approve_list') }}" class="nav-link">Approved Teams</a>
+                    <a href="{{ route('approve_list') }}" class="nav-link">Selected Teams</a>
                 </li>
                 <li class="nav-item {{ request()->is('gellary') ? 'active' : '' }}">
                     <a href="{{url('gellary')}}" class="nav-link">Gallery</a>
